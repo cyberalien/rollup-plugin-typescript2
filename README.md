@@ -201,6 +201,26 @@ See [#108](https://github.com/ezolenko/rollup-plugin-typescript2/issues/108)
 	]
 	```
 
+* `preprocess`: null
+
+	This option exists only in `@cyberalien/rollup-plugin-typescript2` fork. Value is a callback that takes one argument: file content, and returns preprocessed content.
+
+	Purpose of this new option is to allow preprocessing TypeScript content, allowing to insert conditional imports.
+
+	Example:
+	```
+	// ... 
+	plugins: [
+		typescript{
+			preprocess: code => {
+				// Replace "some-dependency" with "another-dependency"
+				return code.replace(/(['"])some-dependency(['"/])/g, '$1another-dependency$2')
+			}
+		}
+	]
+	```
+
+
 ### Declarations
 
 This plugin respects `declaration: true` in your `tsconfig.json` file. When set, it will emit `*.d.ts` files for your bundle. The resulting file(s) can then be used with the `types` property in your `package.json` file as described [here](https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html).
