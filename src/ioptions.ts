@@ -29,4 +29,5 @@ export interface IOptions
 	tsconfigDefaults: any;
 	sourceMapCallback: (id: string, map: string) => void;
 	objectHashIgnoreUnknownHack: boolean;
+	preprocess: ((code: string) => string) | null;
 }

@@ -1,5 +1,5 @@
 {
-  "name": "rollup-plugin-typescript2",
+  "name": "@cyberalien/rollup-plugin-typescript2",
   "version": "0.25.4",
   "description": "Seamless integration between Rollup and TypeScript. Now with errors.",
   "main": "dist/rollup-plugin-typescript2.cjs.js",

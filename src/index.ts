@@ -61,6 +61,7 @@ const typescript: PluginImpl<Partial<IOptions>> = (options) =>
 			tsconfigDefaults: {},
 			objectHashIgnoreUnknownHack: false,
 			cwd: process.cwd(),
+			preprocess: null,
 		});
 
 	if (!pluginOptions.typescript) {
@@ -173,6 +174,10 @@ const typescript: PluginImpl<Partial<IOptions>> = (options) =>
 
 		transform(this: PluginContext, code: string, id: string): TransformSourceDescription | undefined
 		{
+			if (typeof pluginOptions.preprocess === "function") {
+				code = pluginOptions.preprocess(code);
+			}
+
 			generateRound = 0; // in watch mode transform call resets generate count (used to avoid printing too many copies of the same error messages)
 
 			if (!filter(id))
