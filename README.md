@@ -1,13 +1,14 @@
 # rollup-plugin-typescript2
 
-[![npm-version](https://img.shields.io/npm/v/rollup-plugin-typescript2.svg?maxAge=259200)](https://npmjs.org/package/rollup-plugin-typescript2)
-![npm-monthly-downloads](https://img.shields.io/npm/dm/rollup-plugin-typescript2.svg?maxAge=259200)
+[![npm-version](https://img.shields.io/npm/v/@cyberalien/rollup-plugin-typescript2.svg?maxAge=259200)](https://npmjs.org/package/@cyberalien/rollup-plugin-typescript2)
+![npm-monthly-downloads](https://img.shields.io/npm/dm/@cyberalien/rollup-plugin-typescript2.svg?maxAge=259200)
 [![Codeship Status](https://app.codeship.com/projects/fe9cf8f0-e8d4-0134-ec88-4e3d33dcd7ed/status?branch=master)](https://app.codeship.com/projects/207445)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e19b72ab9658405bbfb32dd6d65d1856)](https://www.codacy.com/app/zolenkoe/rollup-plugin-typescript2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ezolenko/rollup-plugin-typescript2&amp;utm_campaign=Badge_Grade)
 
 Rollup plugin for typescript with compiler errors.
 
-This is a rewrite of original rollup-plugin-typescript, starting and borrowing from [this fork](https://github.com/alexlur/rollup-plugin-typescript).
+This is a fork of rollup-plugin-typescript2, adding only `preprocess` option.
+rollup-plugin-typescript2 is a rewrite of original rollup-plugin-typescript, starting and borrowing from [this fork](https://github.com/alexlur/rollup-plugin-typescript).
 
 This version is somewhat slower than original, but it will print out typescript syntactic and semantic diagnostic messages (the main reason for using typescript after all).
 
@@ -15,16 +16,16 @@ This version is somewhat slower than original, but it will print out typescript 
 
 ```bash
 # with npm
-npm install rollup-plugin-typescript2 typescript --save-dev
+npm install @cyberalien/rollup-plugin-typescript2 typescript --save-dev
 # with yarn
-yarn add rollup-plugin-typescript2 typescript --dev
+yarn add @cyberalien/rollup-plugin-typescript2 typescript --dev
 ```
 
 ## Usage
 
 ```js
 // rollup.config.js
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@cyberalien/rollup-plugin-typescript2';
 
 export default {
 	input: './main.ts',
@@ -142,7 +143,7 @@ See [#108](https://github.com/ezolenko/rollup-plugin-typescript2/issues/108)
 
 	Set to true for clean build (wipes out cache on every build).
 
-* `cacheRoot`: `node_modules/.cache/rollup-plugin-typescript2`
+* `cacheRoot`: `node_modules/.cache/@cyberalien/rollup-plugin-typescript2`
 
 	Path to cache. Defaults to a folder in node_modules.
 
@@ -211,12 +212,12 @@ See [#108](https://github.com/ezolenko/rollup-plugin-typescript2/issues/108)
 	```
 	// ... 
 	plugins: [
-		typescript{
+		typescript({
 			preprocess: code => {
 				// Replace "some-dependency" with "another-dependency"
 				return code.replace(/(['"])some-dependency(['"/])/g, '$1another-dependency$2')
 			}
-		}
+		})
 	]
 	```
 
